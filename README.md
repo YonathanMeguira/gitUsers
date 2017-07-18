@@ -1,8 +1,5 @@
-#Started Kit For Angular App
-This app contains:
-Flex layout engine from Terada Covalent
-Material UI Component
-Starting Route With 2 Views
-
+Github lookUp:
+Quick tool to search github users and view their repository per language.
+Could be useful for interview screening. for any additional request fill a bug report or send a mail to johnmeguira@gmail.com
 
 Link: https://jonathanmeguira.github.io/gitUsers/dist/index.html#/search
