@@ -69,6 +69,9 @@ var SearchComponent = (function () {
                 console.log(_this.repoArr);
             }, function (error) { return console.log(error); });
         };
+        this.visitRepo = function (url) {
+            window.open(url, '_newtab');
+        };
         this.userSelected = false;
     }
     return SearchComponent;
@@ -354,7 +357,7 @@ exports = module.exports = __webpack_require__(36)();
 
 
 // module
-exports.push([module.i, "#search-container {\n  height: 100%;\n}\n\n.search-input {\n  width: 300px;\n}\n\n.small-img {\n  height: 45px !important;\n  width: auto !important;\n  border-radius: 50% !important;\n  border: solid 2px #666;\n}\n\n#user-list {\n  height: 600px;\n  overflow: auto;\n  /* shadow with blur : x, y, blur*/\n  box-shadow: 2px 3px 3px 2px grey;\n}\n#repo-list{\n  height: 600px;\n  overflow: auto;\n  width: 100%;\n  margin-left: 20px;\n  /* shadow with blur : x, y, blur*/\n  box-shadow: 2px 3px 3px 2px grey;\n}\n.user-cell {\n  cursor: pointer;\n}\n.repo-name{\n  color: #333;\n  font-weight: 700 !important;\n}\n.repo-description{\n  color: #666;\n}\n.repo-language{\n  color: #999;\n  font-weight: 700 !important;\n}\n", ""]);
+exports.push([module.i, "#search-container {\n  height: 100%;\n}\n\n.search-input {\n  width: 300px;\n}\n\n.small-img {\n  height: 45px !important;\n  width: auto !important;\n  border-radius: 50% !important;\n  border: solid 2px #666;\n}\n\n#user-list {\n  height: 450px;\n  overflow: auto;\n  /* shadow with blur : x, y, blur*/\n  box-shadow: 2px 3px 3px 2px grey;\n}\n#repo-list{\n  height: 450px;\n  overflow: auto;\n  width: 100%;\n  margin-left: 20px;\n  /* shadow with blur : x, y, blur*/\n  box-shadow: 2px 3px 3px 2px grey;\n}\n.user-cell {\n  cursor: pointer;\n}\n.repo-name{\n  color: #333;\n  font-weight: 700 !important;\n}\n.repo-description{\n  color: #666;\n}\n.repo-language{\n  color: #999;\n  font-weight: 700 !important;\n}\n", ""]);
 
 // exports
 
@@ -374,7 +377,7 @@ module.exports = "<router-outlet></router-outlet>\n\n\n\n"
 /***/ 311:
 /***/ (function(module, exports) {
 
-module.exports = "<div layout=\"column\" class=\"mt-5\">\n  <div layout=\"row\" layout-align=\"center center\">\n    <md-input-container class=\"search-input\">\n      <input mdInput placeholder = \"search any git user\" [(ngModel)]=\"userQuery\" type=\"text\">\n    </md-input-container>\n    <button md-raised-button [disabled]=\"!userQuery\" color=\"primary\" class=\"ml-4\" (click)=\"searchUsers(userQuery)\">Search Users</button>\n  </div>\n\n  <div layout=\"row\" class=\"m-5\" layout-align=\"space-between start\" *ngIf=\"usersArr\">\n    <md-list id=\"user-list\" flex=\"25\">\n      <h3 md-subheader>Git Users</h3>\n      <md-list-item *ngFor=\"let user of usersArr\" layout=\"row\"\n                    layout-align=\"start center\" (click)=\"selectUser(user.reposUrl, user.login)\" class=\"user-cell\">\n        <img md-list-icon src=\"{{user.avatar}}\" class=\"small-img\">\n        <h4 md-line>{{user.login}}</h4>\n        <p md-line> ID : {{user.id}} </p>\n      </md-list-item>\n    </md-list>\n    <div *ngIf=\"repoArr\" flex=\"75\">\n      <md-list id=\"repo-list\">\n        <h1 md-subheader>{{selectedUser}} : {{repoLength}} repos</h1>\n        <md-list-item *ngFor=\"let repo of repoArr\" layout=\"row\"\n                      layout-align=\"start center\" class=\"user-cell\">\n          <h4 md-line class=\"repo-name\">{{repo.full_name}}</h4>\n          <p md-line class=\"repo-description\"> {{repo.description}} </p>\n          <p md-line class=\"repo-language\"> {{repo.language}} </p>\n        </md-list-item>\n      </md-list>\n    </div>\n  </div>\n</div>\n\n\n"
+module.exports = "<div layout=\"column\" class=\"mt-5\">\n  <div class=\"mt-5 mb-5\" style=\"text-align: center\">\n    <img\n      src=\"./assets/git.svg\"\n      alt=\"gitLogo\"\n      height=\"87px\"\n      width=\"auto\"/>\n  </div>\n  <div layout=\"row\" layout-align=\"center center\" layout-sm=\"column\" layout-xs=\"column\">\n    <md-input-container class=\"search-input\">\n      <input mdInput placeholder=\"search any git user\" [(ngModel)]=\"userQuery\" type=\"text\">\n    </md-input-container>\n    <button md-raised-button [disabled]=\"!userQuery\" color=\"primary\" class=\"ml-4\" (click)=\"searchUsers(userQuery)\">\n      Search Users\n    </button>\n  </div>\n\n  <div layout=\"row\" class=\"m-5\" layout-align=\"space-between start\" *ngIf=\"usersArr\">\n    <md-list id=\"user-list\" flex=\"25\">\n      <h3 md-subheader>Git Users</h3>\n      <md-list-item *ngFor=\"let user of usersArr\" layout=\"row\"\n                    layout-align=\"start center\" (click)=\"selectUser(user.reposUrl, user.login)\" class=\"user-cell\">\n        <img md-list-icon src=\"{{user.avatar}}\" class=\"small-img\">\n        <h4 md-line>{{user.login}}</h4>\n        <p md-line> ID : {{user.id}} </p>\n      </md-list-item>\n    </md-list>\n    <div *ngIf=\"repoArr\" flex=\"75\">\n      <md-list id=\"repo-list\">\n        <h1 md-subheader>{{selectedUser}} : {{repoLength}} repos</h1>\n        <md-list-item *ngFor=\"let repo of repoArr\" layout=\"row\"\n                      layout-align=\"start center\" class=\"user-cell\" (click)=\"visitRepo(repo.html_url)\">\n          <h4 md-line class=\"repo-name\">{{repo.full_name}}</h4>\n          <p md-line class=\"repo-description\"> {{repo.description}} </p>\n          <p md-line class=\"repo-language\"> {{repo.language}} </p>\n        </md-list-item>\n      </md-list>\n    </div>\n  </div>\n</div>\n\n\n"
 
 /***/ }),
 

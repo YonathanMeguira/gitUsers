@@ -14,13 +14,13 @@
 }
 
 #user-list {
-  height: 600px;
+  height: 450px;
   overflow: auto;
   /* shadow with blur : x, y, blur*/
   box-shadow: 2px 3px 3px 2px grey;
 }
 #repo-list{
-  height: 600px;
+  height: 450px;
   overflow: auto;
   width: 100%;
   margin-left: 20px;

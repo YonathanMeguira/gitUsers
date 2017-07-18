@@ -68,4 +68,8 @@ export class SearchComponent {
       error => console.log(error)
     );
   }
+
+  visitRepo = (url) => {
+    window.open(url, '_newtab');
+  }
 }
