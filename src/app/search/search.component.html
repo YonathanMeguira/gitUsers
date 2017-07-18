@@ -1,0 +1,33 @@
+<div layout="column" class="mt-5">
+  <div layout="row" layout-align="center center">
+    <md-input-container class="search-input">
+      <input mdInput placeholder = "search any git user" [(ngModel)]="userQuery" type="text">
+    </md-input-container>
+    <button md-raised-button [disabled]="!userQuery" color="primary" class="ml-4" (click)="searchUsers(userQuery)">Search Users</button>
+  </div>
+
+  <div layout="row" class="m-5" layout-align="space-between start" *ngIf="usersArr">
+    <md-list id="user-list" flex="25">
+      <h3 md-subheader>Git Users</h3>
+      <md-list-item *ngFor="let user of usersArr" layout="row"
+                    layout-align="start center" (click)="selectUser(user.reposUrl, user.login)" class="user-cell">
+        <img md-list-icon src="{{user.avatar}}" class="small-img">
+        <h4 md-line>{{user.login}}</h4>
+        <p md-line> ID : {{user.id}} </p>
+      </md-list-item>
+    </md-list>
+    <div *ngIf="repoArr" flex="75">
+      <md-list id="repo-list">
+        <h1 md-subheader>{{selectedUser}} : {{repoLength}} repos</h1>
+        <md-list-item *ngFor="let repo of repoArr" layout="row"
+                      layout-align="start center" class="user-cell">
+          <h4 md-line class="repo-name">{{repo.full_name}}</h4>
+          <p md-line class="repo-description"> {{repo.description}} </p>
+          <p md-line class="repo-language"> {{repo.language}} </p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</div>
+
+

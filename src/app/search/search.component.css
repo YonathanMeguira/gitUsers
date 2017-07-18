@@ -1,0 +1,43 @@
+#search-container {
+  height: 100%;
+}
+
+.search-input {
+  width: 300px;
+}
+
+.small-img {
+  height: 45px !important;
+  width: auto !important;
+  border-radius: 50% !important;
+  border: solid 2px #666;
+}
+
+#user-list {
+  height: 600px;
+  overflow: auto;
+  /* shadow with blur : x, y, blur*/
+  box-shadow: 2px 3px 3px 2px grey;
+}
+#repo-list{
+  height: 600px;
+  overflow: auto;
+  width: 100%;
+  margin-left: 20px;
+  /* shadow with blur : x, y, blur*/
+  box-shadow: 2px 3px 3px 2px grey;
+}
+.user-cell {
+  cursor: pointer;
+}
+.repo-name{
+  color: #333;
+  font-weight: 700 !important;
+}
+.repo-description{
+  color: #666;
+}
+.repo-language{
+  color: #999;
+  font-weight: 700 !important;
+}
